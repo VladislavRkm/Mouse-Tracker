@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouse Tracker</title>
+    <script>
+        let movements = [];
+
+        document.addEventListener('mousemove', (event) => {
+            const movement = {
+                x: event.clientX,
+                y: event.clientY,
+                t: new Date().toISOString()
+            };
+            movements.push(movement);
+        });
+
+        function sendData() {
+            fetch('/api/mousemovement', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(movements)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Данные успешно сохранены!');
+                } else {
+                    alert('Не удалось отправить данные.');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="sendData()">Отправить данные</button>
+</body>
+</html>
