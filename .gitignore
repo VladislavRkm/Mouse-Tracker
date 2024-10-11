@@ -1,0 +1,9 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/MouseMouvement/bin/Debug/net8.0
+/MouseMouvement/.vs
+/MouseMouvement/obj
+/MouseMouvement/wwwroot
+/MouseMouvement/MouseMouvementAPI.csproj
